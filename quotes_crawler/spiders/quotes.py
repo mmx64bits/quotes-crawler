@@ -15,4 +15,7 @@ class QuotesSpider(scrapy.Spider):
 								"tags": quote.xpath('.//a[@class="tag"]/text()').extract()
 						}
 
- 
+				url = response.xpath('//li[@class="next"]/a/@href').extract_first()
+				next_url = response.urljoin(url)
+				
+				yield scrapy.Request(url=next_url, callback=self.parse)
