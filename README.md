@@ -1,0 +1,1 @@
+# Scrapy quotes crawler
